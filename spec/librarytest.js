@@ -80,9 +80,34 @@ var complex = require('../app/complex.js')
             });
         });
 
-        describe("when subtracting complex numbers", function(){
 
+        describe("when subtracting complex numbers", function(){
+            it("should subtract 12+2i, 30+4i and return -18-2i", function(){
+                let result = complex.subComplex("12+2i","30+4i");
+                expect(result).toBe("-18-2i");
+            });
+
+            it("should subtract 7-9i, 3-4i and return 4-5i", function(){
+                let result = complex.subComplex("7-9i","3-4i");
+                expect(result).toBe("4-5i");
+            });
+
+            it("should subtract 7-9i, 3-4i,4+2ai and return invalid", function(){
+                let result = complex.subComplex("7-9i","3-4i","4+2ai");
+                expect(result).toBe("Invalid input");
+            });
+
+             it("should subtract 7+9i, 3+4i, -5-5i, 2+12i and return 7-2i", function(){
+                let result = complex.subComplex("7+9i","3+4i","-5-5i","2+12i");
+                expect(result).toBe("7-2i");
+            });
+
+            it("should subtract -7+9i, 3+4i, -5-5i, 2+12i and return 7-2i", function(){
+                let result = complex.subComplex("-7+9i","3+4i","-5-5i","2+12i");
+                expect(result).toBe("-7-2i");
+            });
         });
+
 
         describe("when multiplying complex numbers", function(){
 
