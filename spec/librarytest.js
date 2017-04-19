@@ -14,9 +14,9 @@ var complex = require('../app/complex.js')
                 expect(result).toBe("324+35i");
             });
 
-            it("should add 24+0i to 0+4i and return 24+4i", function(){
-                let result = complex.addComplex("24+0i","0+4i");
-                expect(result).toBe("24+4i");
+            it("should detect invalid inputs like this: [6,4,5]", function(){
+                let result = complex.addComplex("24+0i","0+4i",[6,4,5]);
+                expect(result).toBe("Invalid input");
             });
 
              it("should add correctly 34+4i, 0+4i, 2+41i", function(){
@@ -39,9 +39,9 @@ var complex = require('../app/complex.js')
                 expect(result).toBe("24+1i");
             });
 
-            it("should add 21-3i, 3+4i, 3-12i", function(){
-                let result = complex.addComplex("21-3i","3+4i", "3-12i");
-                expect(result).toBe("27-11i");
+            it("should add 2a-3i, 3+4i, 3-12i", function(){
+                let result = complex.addComplex("2a-3i","3+4i", "3-12i");
+                expect(result).toBe("Invalid input");
             });
 
              it("should add 21-3i, 3+4i, 3-12i, 10+10i, 2-2i", function(){
@@ -58,7 +58,26 @@ var complex = require('../app/complex.js')
                 let result = complex.addComplex("-21-3i","30-4i");
                 expect(result).toBe("9-7i");
             });
-            
+
+            it("should add -21-3i to -30-4i", function(){
+                let result = complex.addComplex("-21-3i","-30-4i");
+                expect(result).toBe("-51-7i");
+            });
+
+            it("should add -21-3i, 3-12i, 10+10i, 2-2i, -30-4i", function(){
+                let result = complex.addComplex("-21-3i","3-12i","10+10i","2-2i","-30-4i");
+                expect(result).toBe("-36-11i");
+            });
+
+            it("should add a-2i, -30-4i", function(){
+                let result = complex.addComplex("a-2i","-30-4i");
+                expect(result).toBe("Invalid input");
+            });
+
+            it("should add 12-2i, -30-4ei", function(){
+                let result = complex.addComplex("12-2i","-30-4ei");
+                expect(result).toBe("Invalid input");
+            });
         });
 
         describe("when subtracting complex numbers", function(){
@@ -78,34 +97,6 @@ var complex = require('../app/complex.js')
         });
 
         describe("when parsing complex numbers, ", function(){
-            // it("should return true when checking if 2+3i is a complex number", function(){
-            //     let num = complex.parseComplex("2+3i");
-            //     expect(num.isComplex).toBe(true);
-            // });
-
-            // it("should return true when checking if 50+31i is a complex number", function(){
-            //     let num = complex.parseComplex("50+31i");
-            //     expect(num.isComplex).toBe(true);
-            // });
-
-            // it("should return true when checking 3i+5 is a complex number", function(){
-            //     let num = complex.parseComplex("3i+5");
-            //     expect(num.isComplex).toBe(true);
-            // });
-
-            // it("should return false when checking -32+5i is a complex number", function(){
-            //     let num = complex.parseComplex("-32+5i");
-            //     expect(num.isComplex).toBe(true);
-            // });
-
-            // it("should return false when checking 3i+love is a complex number", function(){
-            //     let num = complex.parseComplex("3i+love");
-            //     expect(num.isComplex).toBe(false);
-            // });
-
-            // it("should return 3 as the imaginary part for 2+3i", function(){
-            //     let num = complex.parseComplex("2+3i");
-            //     expect(num.complex).toEqual(3);
-            // });
+        
         });
     });
