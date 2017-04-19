@@ -1,0 +1,22 @@
+{
+  "name": "complex-number-class-library",
+  "version": "1.0.0",
+  "description": "A library containing functions to add, subtract, multiply, divide and transpose complex numbers",
+  "main": "complex.js",
+  "scripts": {
+    "test": "./node_modules/.bin/jasmine spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kmazi/Complex-Number-Module.git"
+  },
+  "author": "Mazi Kingsley (touchstone)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kmazi/Complex-Number-Module/issues"
+  },
+  "homepage": "https://github.com/kmazi/Complex-Number-Module#readme",
+  "dependencies": {
+    "jasmine": "^2.5.3"
+  }
+}
