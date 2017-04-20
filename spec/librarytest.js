@@ -78,6 +78,11 @@ var complex = require('../app/complex.js')
                 let result = complex.addComplex("12-2i","-30-4ei");
                 expect(result).toBe("Invalid input");
             });
+
+            it("should add 12, -30-4i and return -18-4i", function(){
+                let result = complex.addComplex("12","-30-4i");
+                expect(result).toBe("-18-4i");
+            });
         });
 
 
@@ -90,6 +95,16 @@ var complex = require('../app/complex.js')
             it("should subtract 7-9i, 3-4i and return 4-5i", function(){
                 let result = complex.subComplex("7-9i","3-4i");
                 expect(result).toBe("4-5i");
+            });
+
+            it("should subtract 90i, 3-5i and return -3+95i", function(){
+                let result = complex.subComplex("90i","3-5i");
+                expect(result).toBe("-3+95i");
+            });
+
+            it("should subtract -9i, 3-5i and return -3-5i", function(){
+                let result = complex.subComplex("-9i","3-5i");
+                expect(result).toBe("-3-4i");
             });
 
             it("should subtract 7-9i, 3-4i,4+2ai and return invalid", function(){
@@ -142,12 +157,23 @@ var complex = require('../app/complex.js')
             });
         });
 
-        describe("when dividing complex numbers", function(){
-
+         describe("when multiplying complex numbers", function(){
+            it("should multiply -2-20i, 3+1i, -14+3i, 1+1i and return 260+1380i", function(){
+                let result = complex.multComplex("-2-20i", "3+1i", "-14+3i", "1+1i");
+                expect(result).toBe("-920+900i");
+            });
         });
 
-        describe("when transposing complex numbers", function(){
+        describe("when dividing complex numbers", function(){
+             it("should divide 3-90i, 3+5i and return -12.97-8.382i", function(){
+                let result = complex.divComplex("3-90i","3+5i");
+                expect(result).toBe("-12.97-8.38i");
+            });
 
+            it("should divide -43+90i, 3-15i and return -6.32-1.60i", function(){
+                let result = complex.divComplex("-43+90i","3-15i");
+                expect(result).toBe("-6.32-1.60i");
+            });
         });
 
     });
