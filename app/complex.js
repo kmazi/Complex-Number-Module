@@ -219,10 +219,17 @@ module.exports = {
     },
 
     multComplex: function(arg1,arg2){
-        const argNo = arguments.length;
-        let rParts = [], iParts = [];
-        let finalRPart = 0, finalIPart = 0;
-        return this.mHelper(arg1, arg2);
+        let input =[];
+        for(let i=0; i<arguments.length; i++){
+            input[i] = arguments[i]; 
+        }
+        let cmplxNo = ""
+        while(input.length>1){
+            cmplxNo = this.mHelper(input[0], input[1]);
+            input.splice(0, 2);
+            input.unshift(cmplxNo);
+        }
+        return cmplxNo;
     },
 
     divComplex: function(arg1,arg2){
@@ -235,4 +242,4 @@ module.exports = {
 
 };
  let cmpx = require('./complex.js');
-console.log(cmpx.addComplex("21-3i","30-4i").isComplex);
+console.log(cmpx.multComplex("12-2i","2-1i"));

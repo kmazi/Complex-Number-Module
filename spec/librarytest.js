@@ -129,9 +129,16 @@ var complex = require('../app/complex.js')
         });
 
         describe("when multiplying complex numbers", function(){
-            it("should multiply 12-2i, 2-i and return 22-16i", function(){
-                let result = complex.multComplex("12-2i","2-i");
+            it("should multiply 12-2i, 2-1i and return 22-16i", function(){
+                let result = complex.multComplex("12-2i","2-1i");
                 expect(result).toBe("22-16i");
+            });
+        });
+
+        describe("when multiplying complex numbers", function(){
+            it("should multiply 12-20i, 12-1i, -4+3i and return 260+1380i", function(){
+                let result = complex.multComplex("12-20i","12-1i","-4+3i");
+                expect(result).toBe("260+1380i");
             });
         });
 
