@@ -102,15 +102,37 @@ var complex = require('../app/complex.js')
                 expect(result).toBe("7-2i");
             });
 
-            it("should subtract -7+9i, 3+4i, -5-5i, 2+12i and return 7-2i", function(){
+            it("should subtract -7+9i, 3+4i, -5-5i, 2+12i and return -7-2i", function(){
                 let result = complex.subComplex("-7+9i","3+4i","-5-5i","2+12i");
                 expect(result).toBe("-7-2i");
+            });
+
+            it("should subtract -7-9i, 3-4i, -5-5i, 2-12i and return -7+12i", function(){
+                let result = complex.subComplex("-7-9i","3-4i","-5-5i","2-12i");
+                expect(result).toBe("-7+12i");
             });
         });
 
 
         describe("when multiplying complex numbers", function(){
+            it("should multiply -7+9i, 3+4i and return -57-1i", function(){
+                let result = complex.multComplex("-7+9i","3+4i");
+                expect(result).toBe("-57-1i");
+            });
+        });
 
+        describe("when multiplying complex numbers", function(){
+            it("should multiply 3+2i, 1+4i and return -5+14i", function(){
+                let result = complex.multComplex("3+2i","1+4i");
+                expect(result).toBe("-5+14i");
+            });
+        });
+
+        describe("when multiplying complex numbers", function(){
+            it("should multiply 12-2i, 2-i and return 22-16i", function(){
+                let result = complex.multComplex("12-2i","2-i");
+                expect(result).toBe("22-16i");
+            });
         });
 
         describe("when dividing complex numbers", function(){
@@ -121,7 +143,4 @@ var complex = require('../app/complex.js')
 
         });
 
-        describe("when parsing complex numbers, ", function(){
-        
-        });
     });
