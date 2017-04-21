@@ -185,17 +185,17 @@ var complex = require('../app/complex.js')
         describe("when formating complex numbers", function(){
              it("should format 3-90i, 3+5i and return {rParts: [3, 3], iParts: [-90, 5]}", function(){
                 let result = complex.cmplxFormat("3-90i","3+5i");
-                expect(result).toBe({rParts: [3, 3], iParts: [-90, 5]});
+                expect(result).toEqual({rParts: [3, 3], iParts: [-90, 5]});
             });
 
             it("should format 90i, 3-15i and return {}", function(){
                 let result = complex.cmplxFormat("90i","3-15i");
-                expect(result).toBe({rParts: [0, 3], iParts: [90, -15]});
+                expect(result).toEqual({rParts: [0, 3], iParts: [90, -15]});
             });
 
              it("should format 9i, -15i and return {}", function(){
                 let result = complex.cmplxFormat("9i", "-15i");
-                expect(result).toBe({rParts: [0, 0], iParts: [9, -15]});
+                expect(result).toEqual({rParts: [0, 0], iParts: [9, -15]});
             });
 
         });

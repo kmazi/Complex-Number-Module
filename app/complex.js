@@ -21,6 +21,9 @@ module.exports = {
                         }
 
                         tempI = (val.split('i'))[0];
+                        if(isNaN(tempI)){
+                            return "Invalid input";
+                        }
                     }else if(!isNaN(inputChr[j])){
                         tempR = inputChr[j];
                     }else{
@@ -157,7 +160,7 @@ module.exports = {
 
 };
  let cmpx = require('./complex.js');
-console.log(cmpx.addComplex("2+3i","3+4i"));
-console.log(cmpx.subComplex("-3-90i","3-15i"));
+console.log(cmpx.addComplex("12-2i","-30-4ei"));
+console.log(cmpx.subComplex("-3+90i","3a-15i"));
 console.log(cmpx.multComplex("2+3i","3+4i"));
 console.log(cmpx.divComplex("2+3i","3+4i"));
