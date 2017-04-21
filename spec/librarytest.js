@@ -174,6 +174,12 @@ var complex = require('../app/complex.js')
                 let result = complex.divComplex("-43+90i","3-15i");
                 expect(result).toBe("-6.32-1.60i");
             });
+
+             it("should divide -43+9i, 33-15i and return -1.18-0.26i", function(){
+                let result = complex.divComplex("-43+9i", "33-15i");
+                expect(result).toBe("-1.18-0.26i");
+            });
+
         });
 
     });
