@@ -1,5 +1,4 @@
 'use strict'
-let util = require('util');
 
 module.exports = {
     cmplxFormat: function(arg1,arg2){
@@ -9,44 +8,24 @@ module.exports = {
             if(typeof arguments[i] != "string"){
                 return "Invalid input";
             }
-            let inputChr = arguments[i].split('');
-            let real=true, img = false;
-            let tempR="";
-            let tempI="";
+            let inputChr = arguments[i].split(/\+|\b-/);
+            let tempR=0;
+            let tempI=0;
             for(let j=0; j<inputChr.length; j++){
-                if(inputChr[j]==='-'&&j===0){
-                    tempR+= inputChr[j];
-                    continue;
-                }
-                if(inputChr[j]==='-'||inputChr[j]==='+'&&j!=0)
-                {
-                    real=false;
-                    img=true;
-                    if(inputChr[j]==='-')
-                    tempI+=inputChr[j];
-                    continue;
-                }
+                let val = inputChr[j];
+                    if(isNaN(val) && val.indexOf('i') != -1 && val.indexOf('i') === (val.length-1))
+                    {
+                        let negIndex = arguments[i].indexOf(val) - 1;
+                        if(arguments[i][negIndex] === '-'){
+                            val = '-'+val;
+                        }
 
-                if(real){
-                    if(isNaN(inputChr[j]) && inputChr[j] != '.')
-                    {
+                        tempI = (val.split('i'))[0];
+                    }else if(!isNaN(inputChr[j])){
+                        tempR = inputChr[j];
+                    }else{
                         return "Invalid input";
                     }
-                    tempR+= inputChr[j];
-                }
-                else if(img){
-                    if(inputChr[j]==='i'){
-                        continue;
-                    }
-                    else if(isNaN(inputChr[j]) && inputChr[j] != '.')
-                    {
-                        return "Invalid input";
-                    }else
-                    tempI+=inputChr[j]
-                }
-                else
-                return "Invalid input"; 
-                
             }
             rParts[i] = parseInt(tempR);
             iParts[i] = parseInt(tempI);
@@ -179,3 +158,6 @@ module.exports = {
 };
  let cmpx = require('./complex.js');
 console.log(cmpx.addComplex("2+3i","3+4i"));
+console.log(cmpx.subComplex("-3-90i","3-15i"));
+console.log(cmpx.multComplex("2+3i","3+4i"));
+console.log(cmpx.divComplex("2+3i","3+4i"));
