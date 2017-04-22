@@ -5,7 +5,7 @@ This is a library containing functions to perform addition, subtraction, multipl
 Complex numbers are numbers that contain both a real part and an imaginary part;
 This project consists of several functions, exposed as an exportable module, that can be used to carry out complex number operations.
 
-__Features of the Complex-Number-Module
+__Features of the Complex-Number-Module__
 * Adds two or more complex numbers and returns the result.
 * Subtracts two or more complex numbers and returns the result.
 * Multiplies two or more complex numbers and returns the result.
