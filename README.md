@@ -26,9 +26,9 @@ Navigate to a specific directory on terminal
 # Example
 let complex = require("<stored-directory>/complex.js");
 ```
-complex.addComplex("3+i","4+3i","9+4i","-2+3i");
- complex.multComplex("4+3i","9+4i","-2+3i");
- complex.subComplex("3+i","4+3i","9+4i");
- complex.divComplex("9+4i","-2+3i");
+complex.addComplex('3+i,4+3i,9+4i,-2+3i');
+ complex.multComplex('4+3i,9+4i,-2+3i');
+ complex.subComplex('3+i,4+3i,9+4i');
+ complex.divComplex('9+4i,-2+3i');
 ```
 
