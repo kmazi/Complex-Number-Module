@@ -20,7 +20,8 @@ Navigate to a specific directory on terminal
 * Clone this repository on that directory using: git clone https://github.com/kmazi/Complex-Number-Module.git.
 * Navigate to the /app folder and import the complex.js file into your current file
 * With the reference to the *complex.js* file, call any of the functions( addComplex, subComplex, multComplex, divComplex).
-*Note that the functions accepts any number of complex numbers as argument of type string.*
+*Note: That the functions accepts any number of complex numbers as argument of type string.*
+*Note: The imaginary part of the complex number is denoted using the letter __i__*
 
 # Example
 let complex = require("<stored-directory>/complex.js");
