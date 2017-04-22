@@ -15,12 +15,12 @@ var complex = require('../app/complex.js')
             });
 
             it("should detect invalid inputs like this: [6,4,5]", function(){
-                let result = complex.addComplex("24+0i","0+4i",[6,4,5]);
+                let result = complex.addComplex("24+0i","4i",[6,4,5]);
                 expect(result).toBe("Invalid input");
             });
 
              it("should add correctly 34+4i, 0+4i, 2+41i", function(){
-                let result = complex.addComplex("34+4i","0+4i", "2+41i");
+                let result = complex.addComplex("34+4i","4i", "2+41i");
                 expect(result).toBe("36+49i");
             });
 
@@ -102,6 +102,16 @@ var complex = require('../app/complex.js')
                 expect(result).toBe("-3+95i");
             });
 
+            it("should subtract 12i, 3i and return 9i", function(){
+                let result = complex.subComplex("12i","3i");
+                expect(result).toBe("9i");
+            });
+
+            it("should subtract -12i, +8i and return 9i", function(){
+                let result = complex.subComplex("-12i","-8i");
+                expect(result).toBe("-4i");
+            });
+
             it("should subtract -9i, 3-5i and return -3-5i", function(){
                 let result = complex.subComplex("-9i","3-5i");
                 expect(result).toBe("-3-4i");
@@ -129,39 +139,42 @@ var complex = require('../app/complex.js')
         });
 
 
-        describe("when multiplying complex numbers", function(){
+         describe("when multiplying complex numbers", function(){
+            it("should multiply -2-20i, 3+1i, -14+3i, 1+1i and return -920+900i", function(){
+                let result = complex.multComplex("-2-20i", "3+1i", "-14+3i", "1+1i");
+                expect(result).toBe("-920+900i");
+            });
+
             it("should multiply -7+9i, 3+4i and return -57-1i", function(){
                 let result = complex.multComplex("-7+9i","3+4i");
                 expect(result).toBe("-57-1i");
             });
-        });
 
-        describe("when multiplying complex numbers", function(){
-            it("should multiply 3+2i, 1+4i and return -5+14i", function(){
-                let result = complex.multComplex("3+2i","1+4i");
-                expect(result).toBe("-5+14i");
+            it("should multiply -2-20i, 2i, -14+3i and return -548+176i", function(){
+                let result = complex.multComplex("-2-20i", "2i", "-14+3i");
+                expect(result).toBe("-548+176i");
             });
-        });
 
-        describe("when multiplying complex numbers", function(){
+            it("should multiply 2i, 3i and return -6", function(){
+                let result = complex.multComplex("2i", "3i");
+                expect(result).toBe("-6");
+            });
+
+             it("should multiply 12-20i, 12-1i, -4+3i and return 260+1380i", function(){
+                let result = complex.multComplex("12-20i","12-1i","-4+3i");
+                expect(result).toBe("260+1380i");
+            });
+
             it("should multiply 12-2i, 2-1i and return 22-16i", function(){
                 let result = complex.multComplex("12-2i","2-1i");
                 expect(result).toBe("22-16i");
             });
-        });
 
-        describe("when multiplying complex numbers", function(){
-            it("should multiply 12-20i, 12-1i, -4+3i and return 260+1380i", function(){
-                let result = complex.multComplex("12-20i","12-1i","-4+3i");
-                expect(result).toBe("260+1380i");
+            it("should multiply 3+2i, 1+4i and return -5+14i", function(){
+                let result = complex.multComplex("3+2i","1+4i");
+                expect(result).toBe("-5+14i");
             });
-        });
 
-         describe("when multiplying complex numbers", function(){
-            it("should multiply -2-20i, 3+1i, -14+3i, 1+1i and return 260+1380i", function(){
-                let result = complex.multComplex("-2-20i", "3+1i", "-14+3i", "1+1i");
-                expect(result).toBe("-920+900i");
-            });
         });
 
         describe("when dividing complex numbers", function(){
@@ -182,6 +195,7 @@ var complex = require('../app/complex.js')
 
         });
 
+
         describe("when formating complex numbers", function(){
              it("should format 3-90i, 3+5i and return {rParts: [3, 3], iParts: [-90, 5]}", function(){
                 let result = complex.cmplxFormat("3-90i","3+5i");
@@ -196,6 +210,11 @@ var complex = require('../app/complex.js')
              it("should format 9i, -15i and return {}", function(){
                 let result = complex.cmplxFormat("9i", "-15i");
                 expect(result).toEqual({rParts: [0, 0], iParts: [9, -15]});
+            });
+            
+            it("should format 9, -15i+4 and return {rParts: [9, 4], iParts: [0, -15]}", function(){
+                let result = complex.cmplxFormat("9", "-15i+4");
+                expect(result).toEqual({rParts: [9, 4], iParts: [0, -15]});
             });
 
         });
